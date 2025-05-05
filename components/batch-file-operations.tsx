@@ -1,4 +1,4 @@
-"\"use client"
+"use client"
 
 import { useState, useEffect, useRef } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -203,8 +203,12 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
   const [watermarkText, setWatermarkText] = useState("")
   const [watermarkImage, setWatermarkImage] = useState<File | null>(null)
   const [watermarkOpacity, setWatermarkOpacity] = useState(50)
-  const [watermarkPosition, setWatermarkPosition] = useState<"center" | "top-left" | "top-right" | "bottom-left" | "bottom-right">("bottom-right")
-  const [imageFilter, setImageFilter] = useState<"none" | "grayscale" | "sepia" | "blur" | "sharpen" | "brightness" | "contrast">("none")
+  const [watermarkPosition, setWatermarkPosition] = useState<
+    "center" | "top-left" | "top-right" | "bottom-left" | "bottom-right"
+  >("bottom-right")
+  const [imageFilter, setImageFilter] = useState<
+    "none" | "grayscale" | "sepia" | "blur" | "sharpen" | "brightness" | "contrast"
+  >("none")
   const [filterIntensity, setFilterIntensity] = useState(50)
   const [imageQuality, setImageQuality] = useState(80)
 
@@ -228,7 +232,7 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
       setTaskId(null)
       updatePreview()
     }
-    
+
     return () => {
       if (taskCheckInterval.current) {
         clearInterval(taskCheckInterval.current)
@@ -492,7 +496,7 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
 
     // 准备操作参数
     const operationParams: Record<string, any> = {}
-    
+
     switch (activeTab) {
       case "rename":
         operationParams.renameType = renameType
@@ -556,7 +560,7 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
         body: JSON.stringify({
           type: activeTab,
           params: operationParams,
-          fileIds: selectedFiles.map(file => file.id),
+          fileIds: selectedFiles.map((file) => file.id),
         }),
       })
 
@@ -583,13 +587,15 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
         affectedFiles: selectedFiles.length,
         failedFiles: 0,
       })
-      onOperationComplete({
-        success: true,
-        message: "模拟操作成功",
-        affectedFiles: selectedFiles.length,
-        failedFiles: 0,
-      }, previewFiles)
-
+      onOperationComplete(
+        {
+          success: true,
+          message: "模拟操作成功",
+          affectedFiles: selectedFiles.length,
+          failedFiles: 0,
+        },
+        previewFiles,
+      )
     } catch (error) {
       console.error("Error creating task:", error)
       setProcessing(false)
@@ -643,7 +649,7 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
             details: task.result.details,
             taskId: task.id,
           },
-          previewFiles
+          previewFiles,
         )
       }
     } catch (error) {
@@ -678,13 +684,13 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
     setSequencePrefix("")
     setDateFormat("yyyy-MM-dd")
     setUseFileDate(true)
-    
+
     setConversionType("image")
     setTargetFormat("")
     setCompressionLevel("medium")
     setMaintainStructure(true)
     setConvertOptions({})
-    
+
     setImageProcessType("resize")
     setResizeWidth(800)
     setResizeHeight(600)
@@ -700,16 +706,16 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
     setImageFilter("none")
     setFilterIntensity(50)
     setImageQuality(80)
-    
+
     setTagOperation("add")
     setTagsToAdd("")
     setTagsToRemove("")
     setTagsToReplace("")
     setUseAiTags(false)
-    
+
     setNewCategory("")
     setUseAiCategory(false)
-    
+
     setResult(null)
   }
 
@@ -1000,11 +1006,7 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
                         </p>
                       </div>
                       <div className="flex items-center space-x-2 pt-2">
-                        <Switch
-                          id="use-file-date"
-                          checked={useFileDate}
-                          onCheckedChange={setUseFileDate}
-                        />
+                        <Switch id="use-file-date" checked={useFileDate} onCheckedChange={setUseFileDate} />
                         <Label htmlFor="use-file-date">使用文件上传日期</Label>
                       </div>
                       <p className="text-xs text-muted-foreground">
@@ -1116,4 +1118,12 @@ export function BatchFileOperations({ isOpen, onClose, selectedFiles, onOperatio
                       </div>
                     </div>
                   )}
-""\
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
