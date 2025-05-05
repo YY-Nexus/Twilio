@@ -2,73 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-
-    /* 动画持续时间变量 */
-    --animation-duration-fast: 150ms;
-    --animation-duration-normal: 300ms;
-    --animation-duration-slow: 500ms;
-    --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.5% 48%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -78,214 +90,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* 添加全局背景样式 */
-.app-background {
-  background-image: url("/images/background.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-/* 调整内容容器样式，增加透明度 */
-.content-container {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(5px);
-  border-radius: 0.5rem;
-}
-
-/* 调整卡片样式，使其在背景上更加突出 */
-.card-on-bg {
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  transform-origin: center;
-  will-change: transform, box-shadow, background-color;
-}
-
-/* 卡片悬停效果 */
-.card-on-bg:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.95);
-}
-
-/* 卡片点击效果 */
-.card-on-bg:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 1);
-}
-
-/* 卡片内容悬停效果 */
-.card-content-hover {
-  transition: transform 0.2s ease;
-}
-
-.card-on-bg:hover .card-content-hover {
-  transform: translateY(-2px);
-}
-
-/* 卡片标题悬停效果 */
-.card-title-hover {
-  transition: color 0.2s ease;
-}
-
-.card-on-bg:hover .card-title-hover {
-  color: #2563eb; /* blue-600 */
-}
-
-/* 卡片按钮悬停效果 */
-.card-button-hover {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-button-hover::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: rgba(37, 99, 235, 0.1); /* blue-600 with opacity */
-  transition: height 0.2s ease;
-  z-index: -1;
-}
-
-.card-on-bg:hover .card-button-hover::after {
-  height: 100%;
-}
-
-/* 添加波纹点击效果 */
-.ripple {
-  position: relative;
-  overflow: hidden;
-}
-
-.ripple::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.7) 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.8s;
-}
-
-.ripple:active::after {
-  transform: scale(0, 0);
-  opacity: 0.3;
-  transition: 0s;
-}
-
-/* 加载动画容器 */
-.loading-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  width: 100%;
-}
-
-/* 表单提交动画 */
-.form-submit-animation {
-  position: relative;
-  overflow: hidden;
-}
-
-.form-submit-animation::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: form-submit-shine 1.5s infinite;
-}
-
-@keyframes form-submit-shine {
-  100% {
-    left: 100%;
-  }
-}
-
-/* 页面过渡动画 */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.page-transition-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.page-transition-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 300ms, transform 300ms;
-}
-
-/* 减少动画的媒体查询 */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .card-on-bg:hover,
-  .card-on-bg:active {
-    transform: none !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  .card-on-bg:hover .card-content-hover {
-    transform: none !important;
-  }
-
-  .ripple::after {
-    display: none !important;
-  }
-
-  .form-submit-animation::before {
-    display: none !important;
-  }
-
-  .page-transition-enter,
-  .page-transition-enter-active,
-  .page-transition-exit,
-  .page-transition-exit-active {
-    transition: none !important;
-    transform: none !important;
   }
 }
